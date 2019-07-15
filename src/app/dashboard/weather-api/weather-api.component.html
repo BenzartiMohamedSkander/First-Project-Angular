@@ -1,0 +1,69 @@
+
+
+
+   
+
+
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <h1>Weather search</h1>
+          <form [formGroup]="weatherForm" (ngSubmit)="onSearch()">
+            <div class="form-group">
+              <label for="title">Country :</label>
+              <input type="text" id="countryName"
+                     class="form-control" formControlName="countryName">
+            </div>
+            
+          <button class="btn btn-success" [disabled]="weatherForm.invalid "
+                type="submit">Search
+          </button>
+          </form>
+
+         
+        </div>
+
+
+
+        
+      </div>
+      
+
+     
+
+
+
+	<div class="row " *ngIf="weathers">
+		<div class="col">
+			<div class="weather-card one">
+				<div class="top">
+					<div class="wrapper">
+					
+						<h1 class="heading">{{weathers.weather[0].description}}</h1>
+						<h3 class="location">{{weathers.name}}</h3>
+						<p class="temp">
+							<span class="temp-value">{{onConvert(weathers.main.temp)}}</span>
+							<span class="deg">0</span>
+							<a href="javascript:;"><span class="temp-type">C</span></a>
+						</p>
+					</div>
+				</div>
+				<div class="bottom">
+					<div class="wrapper">
+						<ul class="forecast">
+							<a href="javascript:;"><span class="lnr lnr-chevron-up go-up"></span></a>
+							<li class="active">
+								<span class="date">Yesterday</span>
+								<span class="lnr lnr-sun condition">
+									<span class="temp">{{onConvert(weathers.main.temp)}}<span class="deg">0</span><span class="temp-type">C</span></span>
+								</span>
+							</li>
+							<li>
+								<span class="date">Tomorrow</span>
+								<span class="lnr lnr-cloud condition">
+									<span class="temp">21<span class="deg">0</span><span class="temp-type">C</span></span>
+								</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
